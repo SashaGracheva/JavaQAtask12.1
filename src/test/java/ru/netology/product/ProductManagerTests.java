@@ -51,6 +51,17 @@ public class ProductManagerTests {
         Product[] expected = {item3, item4};
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldSearchByNoOneProduct() {
+        ProductRepository repo= new ProductRepository();
+        ProductManager manager = new ProductManager(repo);
+        manager.add(item1);
+        manager.add(item2);
+        manager.add(item3);
+        Product[] actual = manager.searchBy("Сердце Москвы");
+        Product[] expected = {};
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
 
 
